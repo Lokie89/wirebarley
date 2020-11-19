@@ -21,9 +21,13 @@
 <div>
     <button id="send">submit</button>
 </div>
-<h3><div id="description"></div></h3>
+<h3>
+    <div id="description"></div>
+</h3>
 </body>
 <script type="text/javascript">
+
+    let rate = 0;
     document.addEventListener("DOMContentLoaded", function () {
         const receiveCurrencyCode = document.querySelector('#receiveCurrencyCode');
         const transferCurrencyCode = document.querySelector('#transferCurrencyCode');
@@ -33,8 +37,13 @@
         })
         const send = document.querySelector('#send');
         send.addEventListener('click', function () {
-            const total = Number(document.getElementById('sendMoney').value) * Number(document.getElementById('rate').textContent.split(' ')[0].replaceAll(',',''));
-            document.getElementById('description').innerText = '수취금액은 ' + addComma(total.toFixed(2)) + ' ' + document.getElementById('receiveCurrencyCode').value +' 입니다.';
+            const sendMoney = Number(document.getElementById('sendMoney').value);
+            if (isNaN(sendMoney) || sendMoney < 0 || sendMoney > 10000) {
+                alert("송금액이 바르지 않습니다.");
+                return;
+            }
+            const total = sendMoney * rate;
+            document.getElementById('description').innerText = '수취금액은 ' + addComma(total.toFixed(2)) + ' ' + document.getElementById('receiveCurrencyCode').value + ' 입니다.';
         })
     })
 
@@ -44,7 +53,8 @@
         req.onreadystatechange = function () {
             if (req.readyState == 4) {
                 if (req.status == 200) {
-                    document.getElementById('rate').innerText = addComma(Number(JSON.parse(req.responseText)['rate']).toFixed(2)) + ' ' + receive + '/' + transfer;
+                    rate = Number(JSON.parse(req.responseText)['rate']).toFixed(2);
+                    document.getElementById('rate').innerText = addComma(rate) + ' ' + receive + '/' + transfer;
                 }
             }
         }
