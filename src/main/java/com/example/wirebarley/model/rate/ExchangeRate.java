@@ -1,6 +1,6 @@
 package com.example.wirebarley.model.rate;
 
-import com.example.wirebarley.common.CurrencyAPI;
+import com.example.wirebarley.common.api.DummyAPI;
 import lombok.Getter;
 
 @Getter
@@ -9,10 +9,10 @@ public class ExchangeRate {
     private CurrencyCode receiveCurrencyCode;
     private double rate;
 
-    public ExchangeRate(CurrencyCode transferCurrencyCode, CurrencyCode receiveCurrencyCode) {
+    public ExchangeRate(DummyAPI api, CurrencyCode transferCurrencyCode, CurrencyCode receiveCurrencyCode) {
         this.transferCurrencyCode = transferCurrencyCode;
         this.receiveCurrencyCode = receiveCurrencyCode;
-        rate = new CurrencyAPI().getRate(transferCurrencyCode.name() + receiveCurrencyCode.name());
+        rate = (Double) api.get(transferCurrencyCode.name() + receiveCurrencyCode.name());
     }
 
 }

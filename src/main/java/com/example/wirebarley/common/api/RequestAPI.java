@@ -1,4 +1,4 @@
-package com.example.wirebarley.common;
+package com.example.wirebarley.common.api;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class RequestAPI implements API<JSONObject> {
+public abstract class RequestAPI<R> implements API<JSONObject> {
 
     private final String API_URL;
     private final JSONParser jsonParser = new JSONParser();
@@ -50,4 +50,6 @@ public abstract class RequestAPI implements API<JSONObject> {
     public JSONObject get() {
         return jsonObject;
     }
+
+    public abstract R get(String key);
 }

@@ -9,9 +9,9 @@ public enum CurrencyCode {
     PHP,
     ;
 
-    public static CurrencyCode getState(String code) {
+    public static CurrencyCode getCode(String codeStr) {
         return Arrays.stream(CurrencyCode.values())
-                .filter(currencyCode -> currencyCode.name().equals(code))
+                .filter(currencyCode -> currencyCode.name().equals(codeStr))
                 .findFirst()
                 .orElse(null)
                 ;
