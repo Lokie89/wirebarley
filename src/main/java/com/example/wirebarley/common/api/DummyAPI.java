@@ -25,15 +25,8 @@ public abstract class DummyAPI implements API {
     }
 
     @Override
-    public <R> R get(Class<R> clazz, String... keys) {
-        for (int i = 0; i < keys.length - 1; i++) {
-            final String key = keys[i];
-            if (jsonObject == null) {
-                throw new RuntimeException();
-            }
-            jsonObject = (JSONObject) jsonObject.get(key);
-        }
-        return clazz.cast(jsonObject.get(keys[keys.length - 1]));
+    public <R> R get(Class<R> clazz, String key) {
+        return clazz.cast(jsonObject.get(key));
     }
 
 }

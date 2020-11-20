@@ -12,13 +12,15 @@ public class CurrencyAPI extends RequestAPI {
     }
 
     //    @Scheduled(cron = "* 0/10 * * * *")
-    public void updateScheduled() {
+    public void generateScheduled() {
         generate();
     }
 
-    public Double get(String currencyCode) {
+    @Override
+    public <R> R get(Class<R> clazz, String key) {
         generate(); // Scheduled 사용하면 삭제
-        return super.get(Double.class,"quotes",currencyCode);
+        JSONObject jsonObject = super.get(JSONObject.class,"quotes");
+        return clazz.cast(jsonObject.get(key));
     }
 
 }
