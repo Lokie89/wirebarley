@@ -16,7 +16,7 @@ public abstract class DummyAPI<R> implements API<JSONObject> {
     }
 
     @Override
-    public void update() {
+    public void generate() {
         try {
             jsonObject = (JSONObject) jsonParser.parse(dummy);
         } catch (ParseException e) {

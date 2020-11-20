@@ -13,12 +13,12 @@ public class CurrencyAPI extends RequestAPI<Double> {
 
     //    @Scheduled(cron = "* 0/10 * * * *")
     public void updateScheduled() {
-        update();
+        generate();
     }
 
     @Override
     public Double get(String currencyCode) {
-        update(); // Scheduled 사용하면 삭제
+        generate(); // Scheduled 사용하면 삭제
         JSONObject jsonObject = (JSONObject) super.get().get("quotes");
         return (Double) jsonObject.get(currencyCode);
     }

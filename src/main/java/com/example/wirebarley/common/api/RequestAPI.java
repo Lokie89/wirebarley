@@ -21,7 +21,7 @@ public abstract class RequestAPI<R> implements API<JSONObject> {
     }
 
     @Override
-    public void update() {
+    public void generate() {
         HttpURLConnection con = null;
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();

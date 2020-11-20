@@ -12,7 +12,7 @@ public class DummyCurrencyAPI extends DummyAPI<Double> {
 
     @Override
     public Double get(String currencyCode) {
-        update();
+        generate();
         JSONObject jsonObject = (JSONObject) super.get().get("quotes");
         return (Double) jsonObject.get(currencyCode);
     }
