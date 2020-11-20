@@ -13,7 +13,7 @@ public enum CurrencyCode {
         return Arrays.stream(CurrencyCode.values())
                 .filter(currencyCode -> currencyCode.name().equals(codeStr))
                 .findFirst()
-                .orElse(null)
+                .orElseThrow(CurrencyCodeException::new)
                 ;
     }
 }
