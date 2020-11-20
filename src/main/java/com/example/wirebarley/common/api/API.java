@@ -1,6 +1,6 @@
 package com.example.wirebarley.common.api;
 
-public interface API<R> {
+public interface API {
     void generate();
-    R get();
+    <R> R get(Class<R> clazz, String... keys);
 }

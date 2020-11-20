@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class RequestAPI<R> implements API<JSONObject> {
+public abstract class RequestAPI implements API {
 
     private final String API_URL;
     private final JSONParser jsonParser = new JSONParser();
@@ -47,9 +47,15 @@ public abstract class RequestAPI<R> implements API<JSONObject> {
     }
 
     @Override
-    public JSONObject get() {
-        return jsonObject;
+    public <R> R get(Class<R> clazz, String... keys) {
+        for (int i = 0; i < keys.length - 1; i++) {
+            final String key = keys[i];
+            if (jsonObject == null) {
+                throw new RuntimeException();
+            }
+            jsonObject = (JSONObject) jsonObject.get(key);
+        }
+        return clazz.cast(jsonObject.get(keys[keys.length - 1]));
     }
 
-    public abstract R get(String key);
 }

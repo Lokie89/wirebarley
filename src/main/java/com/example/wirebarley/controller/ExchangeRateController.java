@@ -1,6 +1,6 @@
 package com.example.wirebarley.controller;
 
-import com.example.wirebarley.common.api.DummyAPI;
+import com.example.wirebarley.common.api.API;
 import com.example.wirebarley.model.rate.CurrencyCode;
 import com.example.wirebarley.model.rate.ExchangeRate;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ExchangeRateController {
 
-    private final DummyAPI<Double> dummyCurrencyAPI;
+    private final API api;
 
-    public ExchangeRateController(DummyAPI<Double> dummyCurrencyAPI) {
-        this.dummyCurrencyAPI = dummyCurrencyAPI;
+    public ExchangeRateController(API dummyCurrencyAPI) {
+        this.api = dummyCurrencyAPI;
     }
 
     @GetMapping(value = "/exchangeRate")
@@ -26,7 +26,7 @@ public class ExchangeRateController {
         final String receiveUppercase = receive.toUpperCase();
         CurrencyCode transferCurrencyCode = CurrencyCode.getCode(transferUppercase);
         CurrencyCode receiveCurrencyCode = CurrencyCode.getCode(receiveUppercase);
-        return new ResponseEntity<>(new ExchangeRate(dummyCurrencyAPI, transferCurrencyCode, receiveCurrencyCode), HttpStatus.OK);
+        return new ResponseEntity<>(new ExchangeRate(api, transferCurrencyCode, receiveCurrencyCode), HttpStatus.OK);
     }
 
     @GetMapping(value = "/home")
