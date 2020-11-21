@@ -12,7 +12,7 @@ public class ExchangeRateDummyAPI extends JsonDummyAPI {
 
     @Override
     public <R> R get(Class<R> clazz, String key) {
-        generate();
+        request();
         JSONObject jsonObject = super.get(JSONObject.class,"quotes");
         return clazz.cast(jsonObject.get(key));
     }

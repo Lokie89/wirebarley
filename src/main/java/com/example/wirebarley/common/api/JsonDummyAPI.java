@@ -16,7 +16,7 @@ public abstract class JsonDummyAPI implements API {
     }
 
     @Override
-    public void generate() {
+    public void request() {
         try {
             jsonObject = (JSONObject) jsonParser.parse(dummy);
         } catch (ParseException e) {

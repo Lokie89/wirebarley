@@ -13,12 +13,12 @@ public class ExchangeRateAPI extends JsonAPI {
 
     //    @Scheduled(cron = "* 0/10 * * * *")
     public void generateScheduled() {
-        generate();
+        request();
     }
 
     @Override
     public <R> R get(Class<R> clazz, String key) {
-        generate(); // Scheduled 사용하면 삭제
+        request(); // Scheduled 사용하면 삭제
         JSONObject jsonObject = super.get(JSONObject.class,"quotes");
         return clazz.cast(jsonObject.get(key));
     }

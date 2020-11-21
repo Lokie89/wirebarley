@@ -21,7 +21,7 @@ public abstract class JsonAPI implements API {
     }
 
     @Override
-    public void generate() {
+    public void request() {
         HttpURLConnection con = null;
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
