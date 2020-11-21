@@ -9,10 +9,14 @@ public class ExchangeRate {
     private CurrencyCode receiveCurrencyCode;
     private double rate;
 
-    public ExchangeRate(API api, CurrencyCode transferCurrencyCode, CurrencyCode receiveCurrencyCode) {
+    private ExchangeRate(API api, CurrencyCode transferCurrencyCode, CurrencyCode receiveCurrencyCode) {
         this.transferCurrencyCode = transferCurrencyCode;
         this.receiveCurrencyCode = receiveCurrencyCode;
         rate = api.get(Double.class, transferCurrencyCode.name() + receiveCurrencyCode.name());
+    }
+
+    public static ExchangeRate of(API api, CurrencyCode transferCurrencyCode, CurrencyCode receiveCurrencyCode) {
+        return new ExchangeRate(api, transferCurrencyCode, receiveCurrencyCode);
     }
 
 }

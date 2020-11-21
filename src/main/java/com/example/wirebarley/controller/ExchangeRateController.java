@@ -26,7 +26,7 @@ public class ExchangeRateController {
         final String receiveUppercase = receive.toUpperCase();
         CurrencyCode transferCurrencyCode = CurrencyCode.getCode(transferUppercase);
         CurrencyCode receiveCurrencyCode = CurrencyCode.getCode(receiveUppercase);
-        return new ResponseEntity<>(new ExchangeRate(api, transferCurrencyCode, receiveCurrencyCode), HttpStatus.OK);
+        return new ResponseEntity<>(ExchangeRate.of(api, transferCurrencyCode, receiveCurrencyCode), HttpStatus.OK);
     }
 
     @GetMapping(value = "/home")
