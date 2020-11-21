@@ -4,14 +4,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public abstract class DummyAPI implements API {
+public abstract class JsonDummyAPI implements API {
 
     private final JSONParser jsonParser = new JSONParser();
     private JSONObject jsonObject = null;
 
     final String dummy;
 
-    public DummyAPI(String dummy) {
+    public JsonDummyAPI(String dummy) {
         this.dummy = dummy;
     }
 

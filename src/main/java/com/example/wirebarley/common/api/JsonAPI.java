@@ -10,13 +10,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class RequestAPI implements API {
+public abstract class JsonAPI implements API {
 
     private final String API_URL;
     private final JSONParser jsonParser = new JSONParser();
     private JSONObject jsonObject = null;
 
-    public RequestAPI(String API_URL) {
+    public JsonAPI(String API_URL) {
         this.API_URL = API_URL;
     }
 

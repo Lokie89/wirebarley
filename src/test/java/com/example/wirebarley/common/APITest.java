@@ -11,11 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 class APITest {
 
     @Autowired
-    API dummyCurrencyAPI;
+    API exchangeRateDummyAPI;
 
     @Test
     void apiTest1() {
-        Assert.assertTrue(dummyCurrencyAPI.get(Double.class, CurrencyCode.USD.name() + CurrencyCode.KRW.name()) == 1105.510487);
+        Assert.assertTrue(exchangeRateDummyAPI.get(Double.class, CurrencyCode.USD.name() + CurrencyCode.KRW.name()) == 1105.510487);
     }
 
 }

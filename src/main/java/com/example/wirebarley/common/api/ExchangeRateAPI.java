@@ -3,11 +3,11 @@ package com.example.wirebarley.common.api;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 
-@Component(value = "currencyAPI")
-public class CurrencyAPI extends RequestAPI {
+@Component(value = "exchangeRateAPI")
+public class ExchangeRateAPI extends JsonAPI {
     private static final String API_URL = "http://api.currencylayer.com/live?access_key=63c18a0666d7f4863dff12ef4470a769&format=1";
 
-    public CurrencyAPI() {
+    public ExchangeRateAPI() {
         super(API_URL);
     }
 
