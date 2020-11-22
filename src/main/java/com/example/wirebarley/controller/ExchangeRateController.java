@@ -15,8 +15,8 @@ public class ExchangeRateController {
 
     private final API api;
 
-    public ExchangeRateController(API exchangeRateDummyAPI) {
-        this.api = exchangeRateDummyAPI;
+    public ExchangeRateController(API exchangeRateAPI) {
+        this.api = exchangeRateAPI;
     }
 
     @GetMapping(value = "/exchangeRate")
